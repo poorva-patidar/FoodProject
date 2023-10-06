@@ -4,7 +4,11 @@ import {
     REMOVE_ITEM_CART,
     UPDATE_CART_QUANTITY,
     CLEAR_CART,
+    UPDATE_DELIVERY_INFO,
+    SAVE_DELIVERY_INFO,
 } from "../constants/cartConstant";
+
+
 
 export const addItemToCart = (id, quantity) => async(dispatch, getState) => {
     try{
@@ -52,6 +56,32 @@ export const removeItemFromCart = (id) => async(dispatch, getState) => {
 export const clearCart = () => (dispatch) => {
     dispatch({type: CLEAR_CART});
     localStorage.removeItem("cartItems");
+};
+
+export const saveDeliveryInfo = (deliveryInfo) => (dispatch, getState) => {
+    try{
+        const existingDeliveryInfo = getState().cart.deliveryInfo;
+        if(existingDeliveryInfo){
+            dispatch({
+                type: UPDATE_DELIVERY_INFO,
+                payload: deliveryInfo
+            })
+        } else {
+            dispatch({
+                type: SAVE_DELIVERY_INFO,
+                payload: deliveryInfo,
+            })
+        }
+    } catch(error){}
+};
+
+export const updateDeliveryInfo = (deliveryInfo) => (dispatch) => {
+    try{
+        dispatch({
+            type: UPDATE_DELIVERY_INFO,
+            payload: deliveryInfo,
+        })
+    } catch(error){}
 };
 
 

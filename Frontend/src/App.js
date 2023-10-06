@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Menu from "./components/Menu";
 import Cart from "./components/cart/Cart";
+import Delivery from "./components/cart/Delivery";
 import Footer from "./components/layouts/Footer";
 import Header from "./components/layouts/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} exact/>
             <Route path="/eats/stores/:id/menus" element={ <Menu />} exact />
             <Route path="/cart" element={<Cart/>} exact></Route>
+            <Route path="/delivery" element={<Delivery/>} exact></Route>
           </Routes>
         </div>
         <Footer />

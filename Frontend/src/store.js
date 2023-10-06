@@ -14,7 +14,14 @@ const reducer = combineReducers({
     menus: menuReducer,
     cart: cartReducer,
 });
-let initialState = {};
+let initialState = {
+    cart: {
+        cartItems: localStorage.getItem("cartItems") 
+        ? JSON.parse(localStorage.getItem("cartItems")): [],
+        deliveryInfo: localStorage.getItem("deliveryInfo")
+        ? JSON.parse(localStorage.getItem("deliveryInfo")): [],
+    },
+};
 
 const composeEnhanchers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = [thunk];

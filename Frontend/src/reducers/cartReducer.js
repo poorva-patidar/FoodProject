@@ -3,6 +3,7 @@ import {
     REMOVE_ITEM_CART,
     UPDATE_CART_QUANTITY,
     CLEAR_CART,
+    SAVE_DELIVERY_INFO,
 } from "../constants/cartConstant";
 
 const initialState = {
@@ -28,7 +29,17 @@ export const cartReducer = (state = initialState, action) => {
                     ...state,
                     cartItems: [...state.cartItems, item],
                 };
-            }     
+            }
+        
+        case UPDATE_CART_QUANTITY:
+            return{
+                    ...state,
+                    cartItems: state.cartItems.map((item) => 
+                    item.fooditem === action.payload.fooditemId
+                    ? {
+                        ...item, quantity: action.payload.quantity
+                    } : item ),    
+            };
         
         case REMOVE_ITEM_CART:
             return{
@@ -36,14 +47,10 @@ export const cartReducer = (state = initialState, action) => {
                 cartItems: state.cartItems.filter((i) => i.fooditem !== action.payload),
             };
 
-        case UPDATE_CART_QUANTITY:
+        case SAVE_DELIVERY_INFO:
             return{
                 ...state,
-                cartItems: state.cartItems.map((item) => 
-                item.fooditem === action.payload.fooditemId
-                ? {
-                    ...item, quantity: action.payload.quantity
-                } : item )    
+                deliveryInfo: action.payload,
             };
         
         case CLEAR_CART:

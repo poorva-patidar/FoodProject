@@ -67,6 +67,8 @@ const Fooditem = ({fooditem}) => {
 
     const showAddToCartButtons = () => {
         setShowButtons(true);
+        // Dispatch action to add the item to cart here
+        dispatch(addItemToCart(fooditem._id, quantity));
     }
 
     return (
