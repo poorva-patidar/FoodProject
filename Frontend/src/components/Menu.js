@@ -4,11 +4,14 @@ import {useParams} from 'react-router-dom';
 import {getMenus} from '../actions/menuAction';
 import {getRestaurants} from '../actions/restaurantAction';
 import Fooditem from './Fooditem';
+import { setRestaurantId } from '../actions/cartAction';
 
 const Menu = (storeId) => {
   const {id} = useParams();
   const dispatch = useDispatch();
   const {menus, loading, error} = useSelector((state) => state.menus); // useSelector hook for selecting specific things from the redux store
+
+  dispatch(setRestaurantId(id));
   
   useEffect(() => {
     dispatch(getMenus(id));

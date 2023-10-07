@@ -6,6 +6,7 @@ import {
     CLEAR_CART,
     UPDATE_DELIVERY_INFO,
     SAVE_DELIVERY_INFO,
+    SET_RESTAURANT_ID,
 } from "../constants/cartConstant";
 
 
@@ -58,21 +59,12 @@ export const clearCart = () => (dispatch) => {
     localStorage.removeItem("cartItems");
 };
 
-export const saveDeliveryInfo = (deliveryInfo) => (dispatch, getState) => {
-    try{
-        const existingDeliveryInfo = getState().cart.deliveryInfo;
-        if(existingDeliveryInfo){
-            dispatch({
-                type: UPDATE_DELIVERY_INFO,
-                payload: deliveryInfo
-            })
-        } else {
-            dispatch({
-                type: SAVE_DELIVERY_INFO,
-                payload: deliveryInfo,
-            })
-        }
-    } catch(error){}
+export const saveDeliveryInfo = (deliveryInfo) => (dispatch) => {
+    dispatch({
+        type: SAVE_DELIVERY_INFO,
+        payload: deliveryInfo,
+    })
+       
 };
 
 export const updateDeliveryInfo = (deliveryInfo) => (dispatch) => {
@@ -82,6 +74,13 @@ export const updateDeliveryInfo = (deliveryInfo) => (dispatch) => {
             payload: deliveryInfo,
         })
     } catch(error){}
+};
+
+export const setRestaurantId = (id) => {
+    return {
+        type: SET_RESTAURANT_ID,
+        payload: id,
+    };
 };
 
 
