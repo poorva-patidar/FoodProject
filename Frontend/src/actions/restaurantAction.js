@@ -13,10 +13,10 @@ import {
 } from "../constants/restaurantConstant";
 
 // action creator to get all the restaurants which dispatches an action if succesful dispatches suceess and if not dispatches an error
-export const getRestaurants = () => async(dispatch) => {
+export const getRestaurants = (keyword=" ") => async(dispatch) => {
     try {
         dispatch({ type: ALL_RESTAURANTS_REQUEST });
-        let link ="/api/v1/eats/stores";
+        let link =`/api/v1/eats/stores?keyword=${keyword}`;
         const {data} = await axios.get(link);
         const {restaurants, count} = data;
         

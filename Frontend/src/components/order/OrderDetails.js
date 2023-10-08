@@ -15,7 +15,7 @@ const OrderDetails = ({}) => {
   //useParams hook to access routes parameter
   const { id } = useParams();
 
-  const {loading, error, order = {}} = useSelector((state) => state.orderDetails);
+  const {loading, error, order = {},} = useSelector((state) => state.orderDetails);
 
   const {deliveryInfo, orderItems, paymentInfo, user, finalTotal, orderStatus} = order;
 
@@ -42,7 +42,7 @@ const OrderDetails = ({}) => {
             <div className="col-12 col-lg-8 mt-1 order-details">
               <h1 className="my-5">Order # {order._id}</h1>
 
-              <h4 className="mb-4">Delivery Info</h4>
+              <h4 className="mb-4">Delivery Information</h4>
               <p>
                 <b>Name:</b> {user && user.name}
               </p>
@@ -72,7 +72,7 @@ const OrderDetails = ({}) => {
                 <span
                   className={
                     order.orderStatus &&
-                    String(order.orderStatus).includes(" Delivered")
+                    String(order.orderStatus).includes("Delivered")
                       ? "greenColor"
                       : "redColor"
                   }

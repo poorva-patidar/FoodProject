@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logout } from "../../actions/userActions";
+import Search from "./Search";
+import "../../App.css";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -26,20 +28,10 @@ const Header = () => {
 
         {/* search bar and search icon*/}
         <div className="col-12 col-md-6 mt-2 mt-md-0">
-          <div className="input-group">
-            <input
-              type="text"
-              id="search_field"
-              className="form-control"
-              placeholder="Enter Your Favorite Restaurant..."
-            />
-
-            <div className="input-group-append">
-              <button id="search_btn" className="btn">
-                <i className="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
+          <Routes>
+            <Route path="/" element={<Search/>} />
+            <Route path="/eats/stores/search/:keyword" element={<Search/>} />
+          </Routes>
         </div>
 
         {/*Login */}

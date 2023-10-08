@@ -113,7 +113,7 @@ const Payment = () => {
   return (
     <>
       <CheckoutSteps delivery confirmOrder payment />
-      <div className="rwo wrapper">
+      <div className="row wrapper">
         <div className="col-10 col-lg-5">
           <form className="shadow-lg" onSubmit={submitHandler}>
             <h1 className="mb-4">Card Information</h1>
@@ -152,7 +152,7 @@ const Payment = () => {
             </div>
 
             <button id="pay_btn" type="submit" className="btn btn-block py-3">
-              Pay {`- ${orderInfo && orderInfo.finalTotal}`}
+              Pay {`-${orderInfo && orderInfo.finalTotal}`}
             </button>
           </form>
         </div>

@@ -48,6 +48,7 @@ function App() {
         <div className="container container-fluid">
           <Routes>
             <Route path="/" element={<Home />} exact/>
+            <Route path="/eats/stores/search/:keyword" element={<Home />} exact/> 
             <Route path="/eats/stores/:id/menus" element={ <Menu />} exact />
             <Route path="/cart" element={<Cart/>} exact/>
             <Route path="/delivery" element={<Delivery/>} exact/>
